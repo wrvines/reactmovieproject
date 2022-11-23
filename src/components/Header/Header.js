@@ -1,8 +1,49 @@
 import "./Header.css";
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 function Header() {
-  return <div>Header</div>;
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+  const handleTheme = () => {
+    setDarkMode(!darkMode);
+    localStorage.setItem("darkMode", !darkMode);
+  };
+
+  return (
+    <div
+      className={
+        darkMode ? "header-container" : "header-container header-light"
+      }
+    >
+      <Link to="/" className="logo">
+        CineTrail
+      </Link>
+      <div className="search-container">
+        <input placeholder="Search movies..." className="search-input" />
+      </div>
+      <div className="header-buttons-container">
+        <div className="theme-button-container">
+          {darkMode ? (
+            <div className="theme-buttons" onClick={handleTheme}>
+              <MdOutlineLightMode className="theme-icon" />
+              <MdOutlineDarkMode className="theme-icon theme-icon-active" />
+            </div>
+          ) : (
+            <div className="theme-buttons" onClick={handleTheme}>
+              <MdOutlineLightMode className="theme-icon theme-icon-active" />
+              <MdOutlineDarkMode className="theme-icon" />
+            </div>
+          )}
+        </div>
+        <div>
+          <button className="create-account-btn">Create an Account</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Header;
