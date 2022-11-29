@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import "./Slider.css";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 function Slider({ apiKey, baseUrl }) {
   //create state for the upcoming movies
@@ -29,7 +30,13 @@ function Slider({ apiKey, baseUrl }) {
     height: "60vh",
   };
 
-  return <div style={sliderStyle}>{upcomingMovies[0]?.title}</div>;
+  return (
+    <div style={sliderStyle}>
+      <MdKeyboardArrowLeft className="left-arrow" />
+      <MdKeyboardArrowRight className="right-arrow" />
+      {/* {upcomingMovies[0]?.title} */}
+    </div>
+  );
 }
 
 export default Slider;

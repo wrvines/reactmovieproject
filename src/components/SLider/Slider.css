@@ -1,0 +1,5 @@
+.left-arrow, .right-arrow {
+    color: var(--red);
+    font-size: 3rem;
+    z-index: 10;
+}
