@@ -2,3 +2,35 @@
     margin-top: var(--header-height);
     color: var(--white);
 }
+
+.movies-wrapper {
+    display: flex;
+}
+
+.popular-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.top-rated-cards-wrapper {
+    width: 40%;
+    
+}
+
+.page-numbers {
+    display: flex;
+    gap: .5rem;
+    cursor: pointer;
+}
+.homepage-light{
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.popular-container {
+    padding: 1rem;
+}
+.top-rated-container {
+    padding: 1rem;
+}

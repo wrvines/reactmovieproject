@@ -1,0 +1,34 @@
+.movie-info-top {
+    position: absolute;
+    top: 0;
+    color: var(--red);
+    opacity: 0;
+}
+
+.movie-info-bottom {
+    position: absolute;
+    bottom: 0;
+    color: var(--white);
+    opacity: 0;
+}
+
+.popular-card, .top-rated-card {
+    margin: 1rem;
+    cursor: pointer;
+}
+
+
+
+.popular-card:hover .movie-info-top,
+.popular-card:hover .movie-info-bottom {
+    opacity: 1;
+}
+
+.top-rated-card:hover .movie-info-top,
+.top-rated-card:hover .movie-info-bottom {
+    opacity: 1;
+}
+
+.top-rated-card:hover, .popular-card:hover {
+    scale: 1.05;
+}

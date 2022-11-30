@@ -5,9 +5,6 @@ import ThemeContextProvider from "./contexts/ThemeContext";
 import Homepage from "./pages/Homepage/Homepage";
 
 function App() {
-  const apiKey = process.env.REACT_APP_API_KEY;
-  const baseUrl = process.env.REACT_APP_BASE_URL;
-
   // console.log(baseUrl);
 
   return (
@@ -16,10 +13,7 @@ function App() {
         <ThemeContextProvider>
           <Header />
           <Routes>
-            <Route
-              path="/"
-              element={<Homepage apiKey={apiKey} baseUrl={baseUrl} />}
-            />
+            <Route path="/" element={<Homepage />} />
           </Routes>
         </ThemeContextProvider>
       </BrowserRouter>

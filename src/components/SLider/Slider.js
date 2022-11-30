@@ -5,14 +5,16 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import Ratings from "../Ratings/Ratings";
 import StarRatings from "react-star-ratings";
 
-function Slider({ apiKey, baseUrl }) {
+function Slider() {
   //create state for the upcoming movies
   const [upcomingMovies, setUpcomingMovies] = React.useState([]);
   const [index, setIndex] = React.useState(0);
   const [currentRating, setCurrentRating] = React.useState(0);
 
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   //baseurl for images
-  const imageBaseUrl = "https://image.tmdb.org/t/p/original";
+  const imageBaseUrl = process.env.REACT_APP_IMAGE_BASE_URL;
 
   //call api for data when the component loads
   React.useEffect(() => {
@@ -20,7 +22,7 @@ function Slider({ apiKey, baseUrl }) {
     axios
       .get(`${baseUrl}movie/upcoming?api_key=${apiKey}`)
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         setUpcomingMovies(res.data.results);
       })
       .catch((err) => console.log(err));
