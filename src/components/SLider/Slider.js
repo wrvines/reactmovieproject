@@ -3,7 +3,8 @@ import React from "react";
 import "./Slider.css";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import Ratings from "../Ratings/Ratings";
-import StarRatings from "react-star-ratings";
+import Genre from "../Genre/Genre";
+import { Link } from "react-router-dom";
 
 function Slider() {
   //create state for the upcoming movies
@@ -13,7 +14,6 @@ function Slider() {
 
   const apiKey = process.env.REACT_APP_API_KEY;
   const baseUrl = process.env.REACT_APP_BASE_URL;
-  //baseurl for images
   const imageBaseUrl = process.env.REACT_APP_IMAGE_BASE_URL;
 
   //call api for data when the component loads
@@ -24,9 +24,11 @@ function Slider() {
       .then((res) => {
         // console.log(res.data.results);
         setUpcomingMovies(res.data.results);
+        let rating = res.data.results[index]?.vote_average / 2;
+        setCurrentRating(rating);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [index]);
 
   const handleLeft = () => {
     // console.log("left");
@@ -61,16 +63,13 @@ function Slider() {
         <div className="movie-info">
           <h1>{upcomingMovies[index]?.title}</h1>
           <p>{upcomingMovies[index]?.overview.slice(0, 120)}</p>
+          <Genre movieGenres={upcomingMovies[index]?.genre_ids} />
           {/* <p>{upcomingMovies[index]?.genre_ids}</p> */}
           <p>{upcomingMovies[index]?.release_date}</p>
-          {/* <Ratings /> */}
-          <StarRatings
-            rating={currentRating}
-            starRatedColor="red"
-            starDimension="1rem"
-            starSpacing="5px"
-          />
-          <p className="see-details">See Details</p>
+          <Ratings stars={currentRating} />
+          <Link to={`moviedetails/${upcomingMovies[index]?.id}`}>
+            <p className="see-details">See Details</p>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,14 +1,15 @@
 import React from "react";
 import StarRatings from "react-star-ratings";
+import "./Ratings.css";
 
-function Ratings() {
-  const movieRating = 4;
+function Ratings({ stars }) {
+  // const movieRating = 4;
 
-  const [currentRating, setCurrentRating] = React.useState(0);
+  // const [currentRating, setCurrentRating] = React.useState(0);
 
   return (
     <StarRatings
-      rating={movieRating}
+      rating={stars}
       starRatedColor="red"
       starDimension="1rem"
       starSpacing="5px"

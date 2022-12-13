@@ -1,4 +1,5 @@
 import React from "react";
+import Ratings from "../Ratings/Ratings";
 import "./MovieCard.css";
 
 function MovieCard({ movie, imageUrl, imgHeight, cardStyle, brdRadius }) {
@@ -18,15 +19,18 @@ function MovieCard({ movie, imageUrl, imgHeight, cardStyle, brdRadius }) {
     <div className={cardStyle}>
       <div style={imageStyle}>
         <div className="movie-info-top">
-          <p>{movie.vote_average}</p>
+          <Ratings stars={movie.vote_average / 2} />
+          {/* <p>{movie.vote_average}</p> */}
         </div>
 
         <div className="movie-info-bottom">
           <p>{movie.title}</p>
-          <p>Rating: {movie.vote_average}</p>
+          {/* <p>Rating: {movie.vote_average}</p> */}
         </div>
       </div>
-      {cardStyle === "top-rated-card" && <p>{movie.title}</p>}
+      {cardStyle === "top-rated-card" && (
+        <p className="rating-title">{movie.title}</p>
+      )}
     </div>
   );
 }

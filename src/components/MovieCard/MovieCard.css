@@ -1,15 +1,22 @@
 .movie-info-top {
     position: absolute;
-    top: 0;
+    top: .5rem;
+    left: .5rem;
     color: var(--red);
     opacity: 0;
+    
 }
 
 .movie-info-bottom {
     position: absolute;
-    bottom: 0;
+    bottom: .5rem;
+    left: .5rem;
     color: var(--white);
     opacity: 0;
+}
+
+.popular-card {
+    overflow: hidden;
 }
 
 .popular-card, .top-rated-card {
@@ -17,18 +24,38 @@
     cursor: pointer;
 }
 
+.rating-title {
+    display: flex;
+    margin-top: .25rem;
+    width: 20vw;
+}
 
 
 .popular-card:hover .movie-info-top,
 .popular-card:hover .movie-info-bottom {
     opacity: 1;
+    animation: myAnim 1.25s ease 0s 1 normal forwards;
+    transition: 1s;
 }
 
 .top-rated-card:hover .movie-info-top,
 .top-rated-card:hover .movie-info-bottom {
     opacity: 1;
+    transition: 1s;
 }
 
 .top-rated-card:hover, .popular-card:hover {
     scale: 1.05;
+}
+
+@keyframes myAnim {
+    0% {
+        visibility: hidden;
+        transform: translateY(50px);
+    }
+
+    100% {
+        visibility: visible;
+        transform: translateY(0);
+    }
 }

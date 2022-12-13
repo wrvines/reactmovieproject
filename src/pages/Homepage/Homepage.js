@@ -25,9 +25,9 @@ function Homepage() {
       .catch((err) => console.log(err));
 
     axios
-      .get(`${baseUrl}movie/top_rated?api_key=${apiKey}&page=${page}`)
+      .get(`${baseUrl}movie/top_rated?api_key=${apiKey}&page=1`)
       .then((res) => {
-        console.log(res.data.results);
+        // console.log(res.data.results);
         setTopRatedMovies(res.data.results.slice(0, 10));
       })
       .catch((err) => console.log(err));
@@ -46,6 +46,7 @@ function Homepage() {
           <div className="popular-cards-wrapper">
             {popularMovies.map((item) => (
               <MovieCard
+                key={item.id}
                 movie={item}
                 imageUrl={item.poster_path}
                 imgHeight="300px"
@@ -66,6 +67,7 @@ function Homepage() {
           <div className="top-rated-cards-wrapper">
             {topRatedMovies.map((item) => (
               <MovieCard
+                key={item.id}
                 movie={item}
                 imageUrl={item.backdrop_path}
                 imgHeight="100px"
