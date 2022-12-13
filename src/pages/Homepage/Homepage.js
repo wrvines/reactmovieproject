@@ -58,7 +58,9 @@ function Homepage() {
           <div className="page-numbers">
             <p>Select Page</p>
             {pageNumbers.map((num) => (
-              <p onClick={() => setPage(num)}>{num}</p>
+              <p key={num} onClick={() => setPage(num)}>
+                {num}
+              </p>
             ))}
           </div>
         </div>

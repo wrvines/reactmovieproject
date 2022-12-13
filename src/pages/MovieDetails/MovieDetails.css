@@ -1,4 +1,56 @@
 .details-container {
     margin-top: 10rem;
     color: var(--white);
+    min-height: 100vh;
+}
+
+.trailer-container {
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.trailer-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.trailer-container-blank{
+    position:relative;
+    padding-top:56.25%;
+    color:var(--red);
+}
+
+.trailer-container-blank p{
+    background-color:var(--dark-bg)
+}
+
+.moviedetails-info {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+   
+}
+
+.details-poster {
+    width: 280px;
+    border-radius: 8px;
+}
+
+.moviedetails-right {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.more-reviews {
+    font-size: .75rem;
+    cursor: pointer;
+    margin-top: 1rem;
 }

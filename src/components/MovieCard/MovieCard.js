@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Ratings from "../Ratings/Ratings";
 import "./MovieCard.css";
 
@@ -16,7 +17,7 @@ function MovieCard({ movie, imageUrl, imgHeight, cardStyle, brdRadius }) {
   };
 
   return (
-    <div className={cardStyle}>
+    <Link className={cardStyle} to={`moviedetails/${movie?.id}`}>
       <div style={imageStyle}>
         <div className="movie-info-top">
           <Ratings stars={movie.vote_average / 2} />
@@ -31,7 +32,7 @@ function MovieCard({ movie, imageUrl, imgHeight, cardStyle, brdRadius }) {
       {cardStyle === "top-rated-card" && (
         <p className="rating-title">{movie.title}</p>
       )}
-    </div>
+    </Link>
   );
 }
 
