@@ -5,6 +5,8 @@ import ThemeContextProvider from "./contexts/ThemeContext";
 import Homepage from "./pages/Homepage/Homepage";
 import MovieDetails from "./pages/MovieDetails/MovieDetails";
 import Footer from "./components/Footer/Footer";
+import Signup from "./pages/Users/Signup";
+import Signin from "./pages/Users/Signin";
 
 function App() {
   // console.log(baseUrl);
@@ -17,6 +19,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/moviedetails/:movieId" element={<MovieDetails />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
           </Routes>
           <Footer />
         </ThemeContextProvider>

@@ -17,6 +17,8 @@
 
 .popular-card {
     overflow: hidden;
+    box-shadow: 5px 5px 10px 3px rgba(171,166,166,0.5);
+    border-radius: 16px;
 }
 
 .popular-card, .top-rated-card {

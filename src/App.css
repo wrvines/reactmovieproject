@@ -9,7 +9,8 @@
 
 :root{
   --red: #e50916;
-  --white:#fff; 
+  --white:#fff;
+  --transparent-white: rgba(0, 0, 0, 0.7); 
   --black:#000; 
   --header-height:70px;
   --header-height-mobile:150px;  

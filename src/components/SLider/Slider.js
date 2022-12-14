@@ -47,6 +47,7 @@ function Slider() {
 
   const sliderStyle = {
     backgroundImage: `url("${imageBaseUrl}${upcomingMovies[index]?.backdrop_path}")`,
+    backGroundColor: "white",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

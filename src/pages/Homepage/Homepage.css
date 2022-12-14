@@ -10,7 +10,7 @@
 .popular-cards-wrapper {
     display: flex;
     flex-wrap: wrap;
-
+    /* box-shadow: 13px 13px 40px 5px rgba(171,166,166,0.75); */
 }
 
 .top-rated-cards-wrapper {
