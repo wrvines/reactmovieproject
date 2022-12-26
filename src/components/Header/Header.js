@@ -4,16 +4,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { UserContext } from "../../contexts/UserContext";
+import axios from "axios";
+import SearchResult from "../SearchResult/SearchResult";
 
 function Header() {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const { user, setUser, token, setToken } = React.useContext(UserContext);
   const [profileOptions, setProfileOptions] = React.useState(true);
+  const [query, setQuery] = React.useState("");
+  const [queryResults, setQueryResults] = React.useState([]);
   let navigate = useNavigate();
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const handleTheme = () => {
     setDarkMode(!darkMode);
-    localStorage.setItem("darkMode", !darkMode);
+    localStorage.setItem("darkMode1", !darkMode);
   };
 
   const handleLogout = () => {
@@ -23,6 +29,18 @@ function Header() {
     setUser("");
     setToken("");
     navigate("/");
+  };
+
+  const handleSearch = (e) => {
+    console.log(e);
+    setQuery(e.target.value);
+    axios
+      .get(`${baseUrl}search/movie?api_key=${apiKey}&query=${e.target.value}`)
+      .then((res) => {
+        // console.log(res.data.results);
+        setQueryResults(res.data.results);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -35,7 +53,18 @@ function Header() {
         CineTrail
       </Link>
       <div className="search-container">
-        <input placeholder="Search movies..." className="search-input" />
+        <input
+          placeholder="Search movies..."
+          className="search-input"
+          onChange={handleSearch}
+        />
+        {query !== "" ? (
+          <div className="search-results-container">
+            {queryResults?.map((item) => (
+              <SearchResult movie={item} setQuery={setQuery} />
+            ))}
+          </div>
+        ) : null}
       </div>
       <div className="header-buttons-container">
         <div className="theme-button-container">

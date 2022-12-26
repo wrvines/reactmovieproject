@@ -1,0 +1,13 @@
+.search-link {
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    color: white;
+    padding-right: .5rem;
+}
+
+.search-link img {
+    height: 50px;
+    width: 50px;
+
+}
