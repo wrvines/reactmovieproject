@@ -69,3 +69,27 @@
     justify-content: space-between;
     border: solid 1px var(--grey);
 }
+
+.profile-container {
+    margin-left: 1rem;
+    font-size: .75rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.fav-div {
+    color: white;
+}
+
+.logout {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

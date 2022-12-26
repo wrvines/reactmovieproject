@@ -1,13 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
 import "./Sign.css";
 
 function Signin() {
+  const serverUrl = "https://cinetrail-server.herokuapp.com";
+  const { user, setUser, token, setToken } = React.useContext(UserContext);
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [success, setSuccess] = React.useState(false);
+  let navigate = useNavigate();
 
-  const handleSignin = () => {};
+  const handleSignin = (e) => {
+    e.preventDefault();
+    // console.log(email, password);
+
+    axios
+      .post(`${serverUrl}/users/login`, { email, password })
+      .then((res) => {
+        // console.log(res.data);
+        //save user data and token
+        setUser(res.data);
+        setToken(res.data.token);
+        //save to local storage
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userInfo", JSON.stringify(res.data));
+      })
+      .catch((err) => console.log(err));
+
+    navigate("/");
+  };
 
   return (
     <div className="sign-container">
@@ -43,7 +67,7 @@ function Signin() {
             Cancel
           </button>
           <button type="submit" className="sign-btn">
-            Sign Up
+            Sign In
           </button>
         </div>
         {success ? (
@@ -55,9 +79,9 @@ function Signin() {
           </p>
         ) : (
           <p className="sign-message">
-            Already have an account? &nbsp;
-            <Link to="/signin" className="red-text">
-              Sign In
+            Don't have an account? &nbsp;
+            <Link to="/signup" className="red-text">
+              Sign Up
             </Link>
           </p>
         )}

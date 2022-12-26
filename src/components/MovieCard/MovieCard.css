@@ -26,10 +26,14 @@
     cursor: pointer;
 }
 
+
+
 .rating-title {
     display: flex;
     margin-top: .25rem;
     width: 20vw;
+    color: var(--white);
+    
 }
 
 

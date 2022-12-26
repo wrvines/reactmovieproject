@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sign.css";
 
 function Signup() {
@@ -9,6 +9,7 @@ function Signup() {
   const [username, setUsername] = React.useState("");
   const [success, setSuccess] = React.useState(false);
   const baseUrl = "https://cinetrail-server.herokuapp.com";
+  let navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -27,6 +28,7 @@ function Signup() {
         }
       })
       .catch((err) => console.log(err));
+    navigate("/");
   };
 
   return (
