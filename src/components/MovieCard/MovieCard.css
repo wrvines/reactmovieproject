@@ -3,7 +3,7 @@
     top: .5rem;
     left: .5rem;
     color: var(--red);
-    opacity: 0;
+    opacity: 1;
     
 }
 
@@ -12,7 +12,7 @@
     bottom: .5rem;
     left: .5rem;
     color: var(--white);
-    opacity: 0;
+    opacity: 1;
 }
 
 .popular-card {
@@ -36,6 +36,11 @@
     
 }
 
+@media (min-width: 500px){
+
+.movie-info-bottom, .movie-info-top {
+    opacity: 0;
+}
 
 .popular-card:hover .movie-info-top,
 .popular-card:hover .movie-info-bottom {
@@ -64,4 +69,5 @@
         visibility: visible;
         transform: translateY(0);
     }
+}
 }
